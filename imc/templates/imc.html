@@ -1,0 +1,51 @@
+{% block content%}
+
+<style>
+    body{
+        background-color: rgb(246, 130, 130);
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100%;
+     }
+
+
+     form{
+        background-color: rgb(233, 54, 54);
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 8px;
+        padding: 50px;
+     }
+
+     input{
+        justify-content: center;
+        align-items: center;
+     }
+
+</style>
+
+
+    <form method="post">
+
+    {%csrf_token%}
+
+    <div class="form-group" style="margin-bottom: 1em;">
+        <label>Altura: </label>
+        {{imc_form.altura}}
+    </div>
+
+    <div class="form-group" style="margin-bottom: 1em;">
+        <label>Peso: </label>
+        {{imc_form.peso}}
+    </div>
+
+    <input type="submit" value="Calcular o IMC" class="btn btn-primary">
+
+    {% if resultado is not None %}
+        <h2>O seu IMC é: {{ resultado }}</h2>
+    {% endif %}
+
+    </form>
+
+{% endblock %}
